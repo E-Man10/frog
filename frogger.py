@@ -1,4 +1,4 @@
-from random import Random, random
+from random import Random, randint
 import pygame
 
 
@@ -47,6 +47,14 @@ if __name__ == "__main__":
         if keys[pygame.K_s] and car_rect.bottom < HEIGHT:
             car_rect.y += VELOCITY
 
+        if frog_rect.colliderect(car_rect):
+            car_rect.x = randint(0, WIDTH - 10)
+            car_rect.y = randint(0, HEIGHT - 15)
+
+        if car_rect.colliderect(frog_rect):
+            frog_rect.x = randint(0, WIDTH, - 10)
+            frog_rect.y = randint(0, HEIGHT, - 15)
+
         display_surface.fill((0,0,0))
         display_surface.blit(frog_image, frog_rect)
         display_surface.blit(car_image, car_rect)
@@ -57,4 +65,4 @@ if __name__ == "__main__":
 
 
     pygame.quit()
-
+    
